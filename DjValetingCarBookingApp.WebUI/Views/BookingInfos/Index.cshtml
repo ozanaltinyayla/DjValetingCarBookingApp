@@ -1,0 +1,37 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+
+@model List<BookingInfoWithCustomerDto>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <td>Customer Name</td>
+            <td>Customer Contact Number</td>
+            <td>Customer Email</td>
+            <td>BookingDate</td>
+            <td>Flexibility</td>
+            <td>VehicleSize</td>
+            <td>Update Booking</td>
+            <td>Delete Booking</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Customer.Name</td>
+                <td>@item.Customer.ContactNumber</td>
+                <td>@item.Customer.Email</td>
+                <td>@item.BookingDate</td>
+                <td>@item.Flexibility</td>
+                <td>@item.VehicleSize</td>
+                <td><a class="btn btn-warning" asp-controller="BookingInfos" asp-action="Update" asp-route-id="@item.Id">Update</a></td>
+                <td><a class="btn btn-danger" asp-controller="BookingInfos" asp-action="Remove" asp-route-id="@item.Id">Delete</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
+
